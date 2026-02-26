@@ -13,3 +13,24 @@
  6. print the answer appropriately as pointer, character and string
  */ 
 
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char string[] = "The quick brown fox jumped over the lazy dog";
+    char substring[] = "ump";
+
+    char *ptr = strstr(string, substring);
+
+    if (ptr != NULL) {
+        printf("Substring found: %s\n", ptr); 
+    } else {
+        printf("Substring not found.\n");
+    }
+
+    printf("Pointer (memory location): %p\n", (void *)ptr);
+    printf("Character at pointer: %c\n", *ptr);
+    printf("String from pointer: %s\n", ptr);
+    
+    return 0;
+}
