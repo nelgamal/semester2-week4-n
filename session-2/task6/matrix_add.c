@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 
 // Modify this code so that 'n' is a command-line argument
 // 
@@ -7,33 +8,38 @@
 // You will need to modify the code so that matrix dimension is variable n
 // remember to free dynamicaly allocated memory 
 
-int main( void ) {
-    int mat1[5][5];
-    int mat2[5][5];
-    int sum[5][5];
+int main( int argc, char **argv ) {
+    int n = atoi(argv[1]);
+    int *mat1 = calloc(n * n, sizeof(int));
+    int *mat2 = calloc(n * n, sizeof(int));
+    int *sum  = calloc(n * n, sizeof(int));
 
     // set initial data
     for( int j=0; j<5; ++ j) {
-        for( int k=0; k<5; ++k ) {
-            mat1[j][k] = -2;
-            mat2[j][k] = 3; 
+        for( int k=0; k<n; ++k ) {
+            mat1[j*n + k] = -2;
+            mat2[j*n + k] = 3; 
         }
     }
 
     // compute sum
-    for( int j=0; j<5; ++ j) {
-        for( int k=0; k<5; ++k ) {
-            sum[j][k] = mat1[j][k] + mat2[j][k]; 
+    for( int j=0; j<n; ++ j) {
+        for( int k=0; k<n; ++k ) {
+            sum[j*n + k] = mat1[j*n + k] + mat2[j*n + k]; 
         }
     }
 
     // print out the result
-    for( int j=0; j<5; ++ j) {
-        for( int k=0; k<5; ++k ) {
-            printf("%d ",sum[j][k]);
+    for( int j=0; j<n; ++ j) {
+        for( int k=0; k<n; ++k ) {
+            printf("%d ",sum[j*n + k]);
         }
         printf("\n");
     }
+
+    free(mat1);
+    free(mat2);
+    free(sum);
 
     return 0;
 }

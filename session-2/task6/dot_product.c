@@ -5,8 +5,8 @@
 // modify this code so that 'n' is a command-line argument
 // we can then run the code for any chosen vector size
 
-int main( void ) {
-    int n=10;
+int main( int argc, char **argv ) {
+    int n = atoi(argv[1]);
     float *vec1 = calloc(n,sizeof(float));
     float *vec2 = calloc(n,sizeof(float));
 
@@ -22,7 +22,7 @@ int main( void ) {
         dot += vec1[k]*vec2[k]; 
     }
 
-    printf("Dot product = %f\n",dot);
+    printf("n = %d\nDot product = %f\n", n, dot);
 
     free(vec1);
     free(vec2);

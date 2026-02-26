@@ -18,6 +18,15 @@ int main( int argc, char **argv ) {
     /*
     Your code
     */
+    
+    int i = atoi(argv[1]);
+    char *str = argv[2];
+    double d = atof(argv[3]);
+
+    printf("Integer value: %d\n", i);
+    printf("String value : %s\n", str);
+    printf("Double value : %.2f\n", d);
+
 
     return 0;
 }
